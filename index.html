@@ -121,8 +121,9 @@
             // 1. Tarik Data (Fetch)
             async function fetchBookings() {
                 setIsLoading(true);
+                // Kemaskini nama jadual kepada 'eTempahan'
                 const { data, error } = await supabase
-                    .from('tempahan')
+                    .from('eTempahan')
                     .select('*');
                 
                 if (error) {
@@ -157,8 +158,9 @@
                     subjek: formData.subjek
                 };
 
+                // Kemaskini nama jadual kepada 'eTempahan'
                 const { error } = await supabase
-                    .from('tempahan')
+                    .from('eTempahan')
                     .insert([newBooking]);
 
                 if (error) {
@@ -177,8 +179,9 @@
                 if (!viewBooking) return;
 
                 if(window.confirm("Adakah anda pasti mahu membatalkan tempahan ini?")) {
+                    // Kemaskini nama jadual kepada 'eTempahan'
                     const { error } = await supabase
-                        .from('tempahan')
+                        .from('eTempahan')
                         .delete()
                         .eq('id', viewBooking.id);
 
